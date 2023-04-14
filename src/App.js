@@ -4,6 +4,7 @@ import "./components/styles/style.css";
 // import Value from "./components/Value";
 import PostList from "./components/PostList";
 import Button from "./components/UI/button/Button";
+import Input from "./components/UI/input/Input";
 function App() {
     const [posts, setPosts] = useState([
       {id: 1, title: 'карнавал', body: "description"},
@@ -23,9 +24,9 @@ function App() {
       {/* <PostList posts={posts2} title={"Список постов 2"}/> */}
 
       <form>
-        <input type="text" placeholder="Название поста" />
-        <input type="text" placeholder="Описание поста" />
-        <Button disabled>Создать пост</Button>
+        <Input type="text" placeholder="Название поста" />
+        <Input type="text" placeholder="Описание поста" />
+        <Button >Создать пост</Button>
       </form>
       <PostList posts={posts} title={"Список постов 1"}/>
     </div>
