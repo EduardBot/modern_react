@@ -1,3 +1,9 @@
+:root {
+    --color: #e9311a;
+
+    --text_color:var(--color);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -20,4 +26,18 @@
     margin-top: 15px;
     justify-content: space-between;
     align-items: center;
+}
+
+.button {
+    padding: 5px 15px;
+    color: var(--text_color);
+    font-size: 14px;
+    background: transparent;
+    border: 1px solid teal;
+    cursor: pointer;
+    border: 1px solid var(--text_color)
+}
+
+.button:hover {
+    box-shadow:  0px 0px 5px#e9311a;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./components/styles/style.css";
 // import Counter from "./components/Counter";
 // import Value from "./components/Value";
@@ -16,6 +16,14 @@ function App() {
     //   {id: 2, title: 'маскарад 2', body: "description"},
     //   {id: 3, title: 'маскарад 3', body: "description"},
     // ])
+    const [title, setTitle] = useState()
+    const bodyInputRef = useRef()
+
+    const addNewPost = (e) => {
+      e.preventDefault()
+      console.log(title)
+      console.log(bodyInputRef.current.value)
+    }
 
   return (
     <div className="App">
@@ -24,9 +32,20 @@ function App() {
       {/* <PostList posts={posts2} title={"Список постов 2"}/> */}
 
       <form>
-        <Input type="text" placeholder="Название поста" />
-        <Input type="text" placeholder="Описание поста" />
-        <Button >Создать пост</Button>
+{/* УПРАВЛЯЕМЫЙ КОМПОНЕНТ */}
+        <Input
+          value={title}
+          type="text"
+          placeholder="Название поста" 
+          onChange={e => setTitle(e.target.value)}
+        />
+{/* НЕУПРАВЛЯЕМЫЙ КОМПОНЕНТ */}
+        <Input
+          type="text"
+          placeholder="Описание поста"
+          ref={bodyInputRef}
+        />
+        <Button onClick={addNewPost} >Создать пост</Button>
       </form>
       <PostList posts={posts} title={"Список постов 1"}/>
     </div>
