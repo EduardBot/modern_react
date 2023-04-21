@@ -3,8 +3,7 @@ import "./components/styles/style.css";
 // import Counter from "./components/Counter";
 // import Value from "./components/Value";
 import PostList from "./components/PostList";
-import Button from "./components/UI/button/Button";
-import Input from "./components/UI/input/Input";
+import PostForm from "./components/PostForm";
 function App() {
     const [posts, setPosts] = useState([
       {id: 1, title: 'карнавал', body: "description"},
@@ -16,37 +15,19 @@ function App() {
     //   {id: 2, title: 'маскарад 2', body: "description"},
     //   {id: 3, title: 'маскарад 3', body: "description"},
     // ])
-    const [title, setTitle] = useState()
-    const bodyInputRef = useRef()
-
-    const addNewPost = (e) => {
-      e.preventDefault()
-      console.log(title)
-      console.log(bodyInputRef.current.value)
+  
+    // const bodyInputRef = useRef()
+    const createPost = (newPost) => {
+      setPosts([...posts, newPost])
     }
+
 
   return (
     <div className="App">
       {/* <Counter />
       <Value /> */}
       {/* <PostList posts={posts2} title={"Список постов 2"}/> */}
-
-      <form>
-{/* УПРАВЛЯЕМЫЙ КОМПОНЕНТ */}
-        <Input
-          value={title}
-          type="text"
-          placeholder="Название поста" 
-          onChange={e => setTitle(e.target.value)}
-        />
-{/* НЕУПРАВЛЯЕМЫЙ КОМПОНЕНТ */}
-        <Input
-          type="text"
-          placeholder="Описание поста"
-          ref={bodyInputRef}
-        />
-        <Button onClick={addNewPost} >Создать пост</Button>
-      </form>
+      <PostForm create={createPost} />
       <PostList posts={posts} title={"Список постов 1"}/>
     </div>
   );
