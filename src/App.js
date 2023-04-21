@@ -20,7 +20,10 @@ function App() {
     const createPost = (newPost) => {
       setPosts([...posts, newPost])
     }
-
+    // Получаем пост из дочернего компонента
+    const removePost = (post) => {
+      setPosts(posts.filter(p => p.id !== post.id))
+    }
 
   return (
     <div className="App">
@@ -28,7 +31,7 @@ function App() {
       <Value /> */}
       {/* <PostList posts={posts2} title={"Список постов 2"}/> */}
       <PostForm create={createPost} />
-      <PostList posts={posts} title={"Список постов 1"}/>
+      <PostList remove={removePost} posts={posts} title={"Список постов 1"}/>
     </div>
   );
 }
