@@ -4,6 +4,7 @@ import "./components/styles/style.css";
 // import Value from "./components/Value";
 import PostList from "./components/PostList";
 import PostForm from "./components/PostForm";
+import Select from "./components/UI/select/Select";
 function App() {
     const [posts, setPosts] = useState([
       {id: 1, title: 'карнавал', body: "description"},
@@ -31,7 +32,12 @@ function App() {
       <Value /> */}
       {/* <PostList posts={posts2} title={"Список постов 2"}/> */}
       <PostForm create={createPost} />
-      <PostList remove={removePost} posts={posts} title={"Список постов 1"}/>
+      <hr style={{margin: '15px 0'}} />
+      <Select />
+      {posts.length !==0
+        ? <PostList remove={removePost} posts={posts} title={"Список постов 1"}/>
+        : <h1 style={{textAlign : "center"}}>Посты не найдены</h1>
+      }
     </div>
   );
 }
